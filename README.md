@@ -50,3 +50,48 @@ console.log(favoriteColor); // Output: "GREEN"
 ```
 
 ---
+
+## What is the use of the keyof keyword in TypeScript?
+
+The `keyof` keyword in TypeScript is used to create a union type of all the keys of an object type. In simpler terms, it allows to get a type that represents all the property names of a given object type.
+
+This is particularly useful when we want to restrict a value to only be one of the keys of an object, ensuring type safety and preventing mistakes such as accessing non-existent properties.
+
+---
+
+## Syntax
+
+```ts
+keyof Type
+```
+
+example:
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+// Using keyof to get all property names of User
+type UserKeys = keyof User;
+// Equivalent to: type UserKeys = "id" | "name" | "email"
+
+function getUserProperty(user: User, key: UserKeys) {
+  return user[key];
+}
+
+const user: User = {
+  id: 1,
+  name: "Romel",
+  email: "romel@example.com",
+};
+
+// Valid usage
+const userName = getUserProperty(user, "name"); // ✅ Returns "Romel"
+
+// Invalid usage (TypeScript error)
+// const userAge = getUserProperty(user, "age");
+// ❌ Error: Argument of type '"age"' is not assignable to parameter of type 'UserKeys'.
+```
