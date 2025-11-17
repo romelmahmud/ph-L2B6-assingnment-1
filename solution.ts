@@ -33,9 +33,9 @@ class Person {
   }
 }
 
-type Item = { title: string; rating: number };
-
-const filterByRating = (items: Item[]): Item[] => {
+const filterByRating = (
+  items: { title: string; rating: number }[]
+): { title: string; rating: number }[] => {
   return items.filter(
     (item) =>
       typeof item.rating === "number" &&
@@ -45,9 +45,9 @@ const filterByRating = (items: Item[]): Item[] => {
   );
 };
 
-type User = { id: number; name: string; email: string; isActive: boolean };
-
-const filterActiveUsers = (users: User[]): User[] | [] => {
+const filterActiveUsers = (
+  users: { id: number; name: string; email: string; isActive: boolean }[]
+): { id: number; name: string; email: string; isActive: boolean }[] | [] => {
   return users.filter((user) => user.isActive === true);
 };
 
@@ -66,17 +66,15 @@ const printBookDetails = (book: Book): void => {
   );
 };
 
-type numberOrString = number | string;
-
 const getUniqueValues = (
-  arr1: numberOrString[],
-  arr2: numberOrString[]
-): numberOrString[] => {
-  const tempArr: numberOrString[] = [];
+  arr1: (number | string)[],
+  arr2: (number | string)[]
+): (number | string)[] => {
+  const tempArr: (number | string)[] = [];
   for (let i = 0; i < arr1.length; i++) tempArr.push(arr1[i]);
   for (let i = 0; i < arr2.length; i++) tempArr.push(arr2[i]);
 
-  const unique: numberOrString[] = [];
+  const unique: (number | string)[] = [];
 
   for (let i = 0; i < tempArr.length; i++) {
     let isDuplicate = false;
@@ -96,14 +94,14 @@ const getUniqueValues = (
   return unique;
 };
 
-type Product = {
-  name: string;
-  price: number;
-  quantity: number;
-  discount?: number;
-};
-
-const calculateTotalPrice = (products: Product[]): number => {
+const calculateTotalPrice = (
+  products: {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number;
+  }[]
+): number => {
   return products.reduce((total, product) => {
     let discount = product.discount ?? 0;
     if (discount < 0) discount = 0;
@@ -112,3 +110,11 @@ const calculateTotalPrice = (products: Product[]): number => {
     return total + discountedPrice * product.quantity;
   }, 0);
 };
+
+const books = [
+  { title: "Book A", rating: 4.5 },
+  { title: "Book B", rating: 3.2 },
+  { title: "Book C", rating: 5 },
+];
+
+console.log(filterByRating(books));
