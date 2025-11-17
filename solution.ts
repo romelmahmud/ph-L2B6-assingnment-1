@@ -69,3 +69,51 @@ const printBookDetails = (book: Book): void => {
     }, Available: ${book.isAvailable ? "Yes" : "No"}`
   );
 };
+
+// Solution 7
+type numberOrString = number | string;
+
+const getUniqueValues = (
+  arr1: numberOrString[],
+  arr2: numberOrString[]
+): numberOrString[] => {
+  const tempArr: numberOrString[] = [];
+  for (let i = 0; i < arr1.length; i++) tempArr.push(arr1[i]);
+  for (let i = 0; i < arr2.length; i++) tempArr.push(arr2[i]);
+
+  const unique: numberOrString[] = [];
+
+  for (let i = 0; i < tempArr.length; i++) {
+    let isDuplicate = false;
+
+    for (let j = 0; j < unique.length; j++) {
+      if (tempArr[i] === unique[j]) {
+        isDuplicate = true;
+        break;
+      }
+    }
+
+    if (!isDuplicate) {
+      unique.push(tempArr[i]);
+    }
+  }
+
+  return unique;
+};
+
+// Solution 8
+
+type Product = {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+};
+
+const calculateTotalPrice = (products: Product[]): number => {
+  return products.reduce((total, product) => {
+    const discount = product.discount ?? 0;
+    const discountedPrice = product.price - (product.price * discount) / 100;
+    return total + discountedPrice * product.quantity;
+  }, 0);
+};
