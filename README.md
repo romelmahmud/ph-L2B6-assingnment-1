@@ -59,7 +59,7 @@ This is particularly useful when we want to restrict a value to only be one of t
 
 ---
 
-## Syntax
+### Syntax
 
 ```ts
 keyof Type
@@ -92,6 +92,6 @@ const user: User = {
 const userName = getUserProperty(user, "name"); // ✅ Returns "Romel"
 
 // Invalid usage (TypeScript error)
-// const userAge = getUserProperty(user, "age");
+const userAge = getUserProperty(user, "age");
 // ❌ Error: Argument of type '"age"' is not assignable to parameter of type 'UserKeys'.
 ```
