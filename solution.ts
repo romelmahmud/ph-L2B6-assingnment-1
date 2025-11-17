@@ -11,3 +11,44 @@ const formatValue = (
   }
   return !value;
 };
+
+// Solution 2
+
+const getLength = (input: string | unknown[]): number | undefined => {
+  if (typeof input === "string") {
+    return input.length;
+  }
+  if (Array.isArray(input)) {
+    return input.length;
+  }
+};
+
+// Solution 3
+
+class Person {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  getDetails(): string {
+    return `'Name: ${this.name}, Age: ${this.age}'`;
+  }
+}
+
+// Solution 4
+type Item = { title: string; rating: number };
+
+const filterByRating = (items: Item[]): Item[] => {
+  return items.filter((item) => item.rating >= 4);
+};
+
+// Solution 5
+type User = { id: number; name: string; email: string; isActive: boolean };
+
+const filterActiveUsers = (users: User[]): User[] | undefined => {
+  return users.filter((user) => user.isActive === true);
+};
