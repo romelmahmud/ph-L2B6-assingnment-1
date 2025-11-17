@@ -30,7 +30,7 @@ let move: Direction = Direction.Up;
 console.log(move); // Output: 0
 ```
 
-### String Enum Example in TypeScript
+### String Enum
 
 String enums allow assigning meaningful string values to enum members. This is useful when descriptive names are needed instead of numbers.
 
