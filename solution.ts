@@ -110,11 +110,3 @@ const calculateTotalPrice = (
     return total + discountedPrice * product.quantity;
   }, 0);
 };
-
-const books = [
-  { title: "Book A", rating: 4.5 },
-  { title: "Book B", rating: 3.2 },
-  { title: "Book C", rating: 5 },
-];
-
-console.log(filterByRating(books));
