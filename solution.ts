@@ -1,5 +1,3 @@
-// Solution 1
-
 const formatValue = (
   value: number | string | boolean
 ): number | string | boolean => {
@@ -12,8 +10,6 @@ const formatValue = (
   return !value;
 };
 
-// Solution 2
-
 const getLength = (input: string | unknown[]): number | undefined => {
   if (typeof input === "string") {
     return input.length;
@@ -22,8 +18,6 @@ const getLength = (input: string | unknown[]): number | undefined => {
     return input.length;
   }
 };
-
-// Solution 3
 
 class Person {
   name: string;
@@ -39,21 +33,23 @@ class Person {
   }
 }
 
-// Solution 4
 type Item = { title: string; rating: number };
 
 const filterByRating = (items: Item[]): Item[] => {
-  return items.filter((item) => item.rating >= 4);
+  return items.filter(
+    (item) =>
+      typeof item.rating === "number" &&
+      item.rating >= 0 &&
+      item.rating <= 5 &&
+      item.rating >= 4
+  );
 };
 
-// Solution 5
 type User = { id: number; name: string; email: string; isActive: boolean };
 
-const filterActiveUsers = (users: User[]): User[] | undefined => {
+const filterActiveUsers = (users: User[]): User[] | [] => {
   return users.filter((user) => user.isActive === true);
 };
-
-// Solution 6
 
 interface Book {
   title: string;
@@ -70,7 +66,6 @@ const printBookDetails = (book: Book): void => {
   );
 };
 
-// Solution 7
 type numberOrString = number | string;
 
 const getUniqueValues = (
@@ -101,8 +96,6 @@ const getUniqueValues = (
   return unique;
 };
 
-// Solution 8
-
 type Product = {
   name: string;
   price: number;
@@ -112,7 +105,9 @@ type Product = {
 
 const calculateTotalPrice = (products: Product[]): number => {
   return products.reduce((total, product) => {
-    const discount = product.discount ?? 0;
+    let discount = product.discount ?? 0;
+    if (discount < 0) discount = 0;
+    if (discount > 100) discount = 100;
     const discountedPrice = product.price - (product.price * discount) / 100;
     return total + discountedPrice * product.quantity;
   }, 0);
