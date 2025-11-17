@@ -16,7 +16,7 @@ TypeScript provides both numeric and string-based enums.
 
 ### Numeric Enums
 
-By default, enums in TypeScript are numeric. The first value starts at `0` (unless specified), and each subsequent value increments by 1.
+By default, TypeScript assigns numeric values to enum members, starting from 0 and incrementing by 1 for subsequent members. We can explicitly assign numeric values to members, and subsequent members will auto-increment from that assigned value.
 
 ```ts
 enum Direction {
@@ -30,9 +30,9 @@ let move: Direction = Direction.Up;
 console.log(move); // Output: 0
 ```
 
-### String Enum
+### String Enums
 
-String enums allow assigning meaningful string values to enum members. This is useful when descriptive names are needed instead of numbers.
+String enums allow assigning meaningful string values to enum members. This is useful when descriptive names are needed instead of numbers. In a string enum, each member has to be constant-initialized with a string literal, or with another string enum member.
 
 ```ts
 enum Color {
@@ -44,3 +44,5 @@ enum Color {
 let favoriteColor: Color = Color.Green;
 console.log(favoriteColor); // Output: "GREEN"
 ```
+
+---
