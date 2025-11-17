@@ -52,3 +52,20 @@ type User = { id: number; name: string; email: string; isActive: boolean };
 const filterActiveUsers = (users: User[]): User[] | undefined => {
   return users.filter((user) => user.isActive === true);
 };
+
+// Solution 6
+
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+  isAvailable: boolean;
+}
+
+const printBookDetails = (book: Book): void => {
+  console.log(
+    `Title: ${book.title}, Author: ${book.author}, Published: ${
+      book.publishedYear
+    }, Available: ${book.isAvailable ? "Yes" : "No"}`
+  );
+};
