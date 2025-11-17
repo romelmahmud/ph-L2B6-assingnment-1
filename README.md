@@ -1,6 +1,6 @@
 ## What is the Use of Enums in TypeScript?
 
-TypeScript is a superset of JavaScript that adds static typing to the language. One of the powerful features TypeScript provides is **enums**. Enums allow the definition of a set of named constants, which can make code more readable, maintainable, and less error-prone.
+**enums** in TypeScript is a special type that allows defining a set of named constants. It is a feature that provides a way to create a collection of related values and assign meaningful names to them, improving code readability and maintainability and less error-prone.
 
 ### Why Use Enums?
 
@@ -10,9 +10,9 @@ Enums are useful when there is a **fixed set of related values** that need to be
 - **Preventing errors**: TypeScript ensures that only valid enum values are used.
 - **Ease of maintenance**: Updating a value in one place automatically updates all references.
 
-For example, enums are helpful for representing the days of the week, user roles, or HTTP status codes. Using enums makes the code cleaner and easier to understand.
-
 ---
+
+TypeScript provides both numeric and string-based enums.
 
 ### Numeric Enums
 
